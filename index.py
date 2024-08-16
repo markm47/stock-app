@@ -35,8 +35,10 @@ for i, tab in enumerate(tabs):
   # Convert numeric columns to strings to handle mixed data types
   df_new[['units', 'cost', 'total']] = df_new[['units', 'cost', 'total']].astype(str)
 
+  df_new = df_new.reset_index(drop=True)
+
   # Streamlit data editor that allows the user to modify the DataFrame
-  edited_df = tab.data_editor(df_new, use_container_width=True, height=600, num_rows='dynamic', disabled=False)
+  edited_df = tab.data_editor(df_new, use_container_width=True, height=600, num_rows='dynamic', disabled=False, hide_index=True)
 
   # When the save button is pressed
   if tab.button('Save', key=i):
